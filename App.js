@@ -1,21 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import React, { Component } from 'react';
+import { StyleSheet, View, Button, Text } from 'react-native';
+ 
+export default class App extends React.Component { 
+  constructor(props){ 
+    super(props); 
+    this.state={       
+      numeroInicial : 1 
+    }
+  }
+ 
+GeradorNumeroAleatorio=()=>
+{
+ 
+var numeroAleatorio = Math.floor(Math.random() * 100) + 1 ;
+ 
+this.setState({
+ 
+  numeroInicial: numeroAleatorio
+ 
+})
 }
-
-const styles = StyleSheet.create({
-  container: {
+ 
+  render() {
+    return ( 
+            
+      <View style={styles.Container} >      
+ 
+       <Text style={styles.ContainerTex}>{this.state.numeroInicial}</Text>
+ 
+       <Button title="Gerador de números" onPress={this.GeradorNumeroAleatorio} />
+        
+      </View> 
+    );
+  }
+}
+ 
+const styles = StyleSheet.create(
+{
+  Container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-});
+    alignItems: 'center',
+    backgroundColor: '#D4F1F4',   
+    justifyContent: 'center',
+  },  
+  
+    ContainerTex:{
+    marginBottom: 20, 
+    fontSize: 20,    
+  },   
+}
+);
